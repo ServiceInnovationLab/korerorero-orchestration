@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
+import cors from "cors";
 import { MOUTH_SHAPES } from "./utils";
 import speechUrl from "./speech-url";
 import { createProxyMiddleware } from "http-proxy-middleware";
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(helmet());
 app.use(helmet.xssFilter());
+app.use(cors());
 app.disable("x-powered-by");
 app.use(express.json());
 app.get("/", function (_req, res) {
